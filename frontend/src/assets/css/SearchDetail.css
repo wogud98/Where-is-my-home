@@ -1,0 +1,51 @@
+#leftOption {
+  height: 85vh;
+  width: 65vw;
+  background-color: #14213d;
+}
+
+#rightOption {
+  height: 85vh;
+  width: 35vw;
+  padding: 20px;
+  background-color: #14213d;
+}
+#right-table > thead > tr > th {
+  background-color: #fca311;
+}
+
+#right-table {
+  height: 65vh;
+  background-color: #e5e5e5;
+}
+
+W .page-link {
+  align-items: center;
+  font-size: 1rem;
+  color: black;
+}
+
+#detail-body {
+  background: linear-gradient(
+    5deg,
+    rgba(209, 152, 152, 0.218),
+    rgb(213, 214, 220)
+  );
+}
+
+.card,
+.card-body {
+  width: 100%;
+  background-color: black;
+}
+
+.cd-title {
+  color: white;
+}
+/* .body {
+  background: linear-gradient(
+    5deg,
+    rgba(193, 225, 191, 0.218),
+    rgb(240, 115, 115)
+  );
+} */

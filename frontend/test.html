@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* Javascript 샘플 코드 */
+
+      var xhr = new XMLHttpRequest();
+      var url =
+        "http://apis.data.go.kr/B554287/DisabledPersonConvenientFacility/getDisConvFaclList"; /*URL*/
+      var queryParams =
+        "?" +
+        encodeURIComponent("serviceKey") +
+        "=" +
+        "YOUR_SERVICE_KEY"; /*Service Key*/
+      queryParams +=
+        "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent(""); /**/
+      queryParams +=
+        "&" +
+        encodeURIComponent("numOfRows") +
+        "=" +
+        encodeURIComponent(""); /**/
+      queryParams +=
+        "&" +
+        encodeURIComponent("faclNm") +
+        "=" +
+        encodeURIComponent("서산제일교회"); /**/
+      queryParams +=
+        "&" + encodeURIComponent("siDoNm") + "=" + encodeURIComponent(""); /**/
+      queryParams +=
+        "&" + encodeURIComponent("cggNm") + "=" + encodeURIComponent(""); /**/
+      queryParams +=
+        "&" +
+        encodeURIComponent("roadNm") +
+        "=" +
+        encodeURIComponent("남부순환로 68"); /**/
+      queryParams +=
+        "&" +
+        encodeURIComponent("faclTyCd") +
+        "=" +
+        encodeURIComponent("UC0H03"); /**/
+      xhr.open("GET", url + queryParams);
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+          alert(
+            "Status: " +
+              this.status +
+              "nHeaders: " +
+              JSON.stringify(this.getAllResponseHeaders()) +
+              "nBody: " +
+              this.responseText
+          );
+        }
+      };
+
+      xhr.send("");
+      console.log(xhr);
+    </script>
+  </body>
+</html>

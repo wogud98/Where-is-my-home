@@ -1,0 +1,90 @@
+/* header에 맞춰 margin 조절하기 */
+
+.logo {
+  display: block;
+  font-size: 70px;
+  text-decoration: none;
+  color: #fca311;
+  margin-left: 30px;
+}
+
+fieldset {
+  /* display: inline-block;
+    text-align: center; */
+  /* 가운데 정렬 */
+  margin: 0 auto 0 auto;
+  border-radius: 10px;
+  border-color: #344e41;
+  width: 600px;
+  background-color: #e5e5e5ba;
+}
+
+.label {
+  display: inline-block;
+  width: 80px;
+}
+
+.fieldset-input {
+  width: 300px;
+  padding: 10px;
+  background-color: #14213d;
+  color: white;
+  border-radius: 10px;
+  border-style: none;
+  font-weight: bold;
+}
+
+.fieldset-input:focus {
+  outline: medium solid black;
+}
+
+.fieldset-input::-webkit-input-placeholder {
+  color: white;
+}
+
+.id-duplicate-check-btn {
+  width: 320px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+.id-duplicate-check-btn:hover {
+  background-color: #588157;
+  color: white;
+}
+
+.h4-interests {
+  text-align: start;
+  padding-bottom: 10px;
+  margin-left: 140px;
+}
+
+/* 주소 API css */
+.li-address {
+  text-align: start;
+  margin-left: 140px;
+}
+
+.signin-btn {
+  width: 320px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+.signin-btn:hover {
+  background-color: #588157;
+  color: white;
+}
+
+.a-signin {
+  text-decoration: none;
+  color: #14213d;
+}
+
+/* 웹 width 축소 제한하는 법? */
+@media (min-width: 700px) {
+}
