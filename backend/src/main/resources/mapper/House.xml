@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.ws.happyhouse.model.mapper.HouseMapper">
+
+	
+
+	<sql id="search">
+		<if test="word != null and word != ''">
+				and hi.apartmentName like concat("%", #{word}, "%")
+		</if>
+	</sql>
+	
+	<!-- 
+	<select id="listArticle" parameterType="Map" resultType="Map">
+		SELECT hi.aptCode, hi.apartmentName, hd.dealAmount, hd.area, 
+			(SELECT CONCAT("'", dealYear, ".", dealMonth, ".", dealDay) FROM housedeal WHERE aptCode = hd.aptCode AND dealAmount = hd.dealAmount LIMIT 1) AS dealDate, 
+		    (SELECT CONCAT(dc.sidoname, " ", dc.gugunname, " ", ho.roadname, " ", trim(BOTH '0' FROM ho.roadnamebonbun)) 
+		        FROM dongcode dc 
+		        INNER JOIN houseinfo ho ON dc.dongcode = ho.dongcode 
+		        WHERE aptCode = hd.aptCode) AS place
+		FROM houseinfo AS hi JOIN housedeal AS hd 
+		ON hi.aptCode = hd.aptCode 
+		<include refid="search"></include>
+		WHERE hi.aptCode IN (
+		    SELECT aptCode
+		    FROM (
+		        SELECT aptCode, apartmentName, dongCode, 
+		            (6371 * ACOS(
+		                    COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) +
+		                    SIN(RADIANS(#{lat})) * SIN(RADIANS(lat))
+		            )) AS distance 
+		        FROM houseinfo 
+		    ) AS subquery
+		    <![CDATA[WHERE distance < #{dis}]]>
+		);
+	</select>
+	-->
+
+	<select id="listArticle" parameterType="Map" resultType="Map">
+		SELECT hi.aptCode, hi.apartmentName, hi.lng, hi.lat,
+		    (SELECT CONCAT(dc.sidoname, " ", dc.gugunname, " ", ho.roadname, " ", trim(BOTH '0' FROM ho.roadnamebonbun)) 
+		        FROM dongcode dc 
+		        INNER JOIN houseinfo ho ON dc.dongcode = ho.dongcode 
+		        WHERE aptCode = hi.aptCode) AS place
+		FROM houseinfo AS hi
+		WHERE hi.aptCode IN (
+		    SELECT aptCode
+		    FROM (
+		        SELECT aptCode, apartmentName, dongCode, 
+		            (6371 * ACOS(
+		                    COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) +
+		                    SIN(RADIANS(#{lat})) * SIN(RADIANS(lat))
+		            )) AS distance 
+		        FROM houseinfo 
+		    ) AS subquery
+		    <![CDATA[WHERE distance < #{dis}]]>
+		)
+	</select>
+
+		
+	<select id="getTotalArticleCount" parameterType="Map" resultType="int">
+	    SELECT COUNT(*) AS result_count
+	    FROM (
+	        SELECT (6371 * ACOS(
+	            COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) +
+	            SIN(RADIANS(#{lat})) * SIN(RADIANS(lat))
+	        )) AS dis
+	        FROM houseinfo
+	        <![CDATA[HAVING dis < #{dis}]]>
+	    ) AS subquery
+	</select>
+	
+	<select id="getAreaKeyword" parameterType="String" resultType="Map">
+		SELECT DISTINCT CONCAT(sidoname, " ", gugunname) as place
+		FROM dongcode
+		WHERE CONCAT(sidoname, " ", gugunname) LIKE CONCAT(#{word},"%")
+	</select>
+	
+	<select id="getAptInfoList" parameterType="Map" resultType="Map">
+		select hi.apartmentName as "매물 이름" , hd.dealAmount as "가격", hd.area as "면적", 
+			concat(hd.dealYear, ".", if( length(hd.dealMonth)=1 , concat("0",hd.dealMonth) , hd.dealMonth ),".", if( length(hd.dealDay)=1 , concat("0",hd.dealDay) , hd.dealDay ) ) as "거래 일자",
+			(SELECT CONCAT(dc.sidoname, " ", dc.gugunname, " ", ho.roadname, " ", trim(BOTH '0' FROM ho.roadnamebonbun)) 
+				FROM dongcode dc INNER JOIN houseinfo ho
+    			ON dc.dongcode = ho.dongcode
+    			WHERE aptCode = hi.aptCode) as "도로명 주소"
+		from houseinfo hi right outer join housedeal hd 
+		on hi.aptCode = hd.aptCode
+		where hd.aptCode = #{aptCode}
+		limit #{start}, #{listsize};
+	</select>
+	
+	<select id="getTotalAptInfoListCount" parameterType="Map" resultType="int">
+		select count(*)
+		from houseinfo hi right outer join housedeal hd 
+		on hi.aptCode = hd.aptCode
+		where hd.aptCode = #{aptCode};
+	</select>
+	
+		
+</mapper>

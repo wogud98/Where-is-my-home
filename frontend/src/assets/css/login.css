@@ -1,0 +1,64 @@
+/* header에 맞춰 margin 조절하기 */
+.login-container {
+  text-align: center;
+  background-color: #14213d;
+  padding-top: 100px;
+}
+
+.login-btn {
+  width: 320px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  background-color: #fca311;
+  color: white;
+}
+
+.find-password-btn {
+  width: 320px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+.find-password-btn:hover {
+  background-color: #588157;
+  color: white;
+}
+
+.userIdFindPw {
+  width: 240px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  background-color: #588157;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.userIdFindPw::-webkit-input-placeholder {
+  color: white;
+}
+
+.find-btn {
+  width: 80px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+.find-btn:hover {
+  background-color: #588157;
+  color: white;
+}
+
+/* 웹 width 축소 제한하는 법? */
+@media (min-width: 700px) {
+}

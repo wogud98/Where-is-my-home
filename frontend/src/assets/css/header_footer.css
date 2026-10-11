@@ -1,0 +1,79 @@
+/* header css 시작 */
+
+header {
+  /* width: 100; */
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  /* background-color: #dad7cd; */
+  /* border-bottom: 1px solid black; */
+}
+
+.div-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header > nav {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+header ul {
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+}
+
+header ul > li {
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+/* header css 끝 */
+/* footer css 시작 */
+
+footer {
+  /* width: 100; */
+  height: 5vh;
+  color: rgb(0, 0, 0);
+  /* width: 100%;
+
+position: relative; */
+  /* align-items: flex-end; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+}
+
+/* nav.nav-footer {
+display: flex;
+justify-content: flex-end;
+} */
+
+/* footer ul {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+} */
+
+/* footer ul > li {
+font-size: 20px;
+height: 100%;
+} */
+
+/* footer css 끝 */

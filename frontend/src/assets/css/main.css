@@ -1,0 +1,15 @@
+@import "./base.css";
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  overflow-x: hidden;
+
+  font-weight: normal;
+  background: #14213d;
+}
+
+.table {
+  text-align: center;
+}

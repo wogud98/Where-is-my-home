@@ -1,0 +1,14 @@
+#kakaoViewBox {
+    position: relative;
+    /* height: 600px; */
+}
+
+#searchList-box {
+    position: relative;
+    height: 81vh;
+}
+
+#map_wrap {
+    position: absolute;
+    height: 100%;
+}
