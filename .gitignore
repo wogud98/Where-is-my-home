@@ -1,4 +1,4 @@
-# Local secrets (see frontend/.env.example, backend/.env.example)
+# Local secrets (required keys are listed in README.md)
 .env
 .env.*
 !.env.example
