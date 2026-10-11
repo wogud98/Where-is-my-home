@@ -2,3 +2,9 @@
 .env
 .env.*
 !.env.example
+
+# Large listing dumps (keep outside the repo, e.g. ../DB)
+mwolbang_DB/happyhouse_dongcode.sql
+mwolbang_DB/happyhouse_houseinfo.sql
+mwolbang_DB/happyhouse_housedeal.sql
+*.log
